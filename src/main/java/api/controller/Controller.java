@@ -10,39 +10,39 @@ import java.util.List;
 @RestController
 public class Controller {
     @Autowired
-    private Service_CLS scls;
+    private Service_CLS serviceCls;
 
     @PostMapping("/addtask")
-    public Modal addtask(@RequestBody Modal sc) {
-        Modal entcs = this.scls.addtolist(sc);
-        return entcs;
+    public Modal addTask(@RequestBody Modal sc) {
+        Modal modal = this.serviceCls.addToList(sc);
+        return modal;
     }
 
-    @DeleteMapping("/deleteall")
-    public List<Modal> deleteall() {
-        return this.scls.deleteall();
+    @DeleteMapping("/deletealltask")
+    public List<Modal> deleteAll() {
+        return this.serviceCls.deleteAll();
 
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deletesingle(@PathVariable("id") int id) {
-        this.scls.deletedata(id);
+    @DeleteMapping("/deletetask/{id}")
+    public void deleteSingle(@PathVariable("id") int id) {
+        this.serviceCls.deleteSingle(id);
     }
 
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/updatetask/{id}")
     public Modal update(@RequestBody Modal entcls, @PathVariable("id") int id) {
-        this.scls.update(entcls, id);
+        this.serviceCls.update(entcls, id);
         return entcls;
     }
 
-    @GetMapping("/showall")
-    public List<Modal> showall() {
-        return this.scls.getdetails();
+    @GetMapping("/showalltask")
+    public List<Modal> showAll() {
+        return this.serviceCls.getDetails();
     }
 
-    @GetMapping("/show/{id}")
-    public Modal showsingle(@PathVariable("id") int id) {
-        return this.scls.getsingle(id);
+    @GetMapping("/showtask/{id}")
+    public Modal showSingle(@PathVariable("id") int id) {
+        return this.serviceCls.getSingle(id);
     }
 }

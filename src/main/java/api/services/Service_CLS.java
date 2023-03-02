@@ -14,41 +14,42 @@ public class Service_CLS {
     static {
         list1.add(new Modal(01, "walk", 5, "go for walk ", "in progress"));
         list1.add(new Modal(02, "talk", 5, "go for walk ", "in progress"));
-        list1.add(new Modal(03, "walk", 5, "go for walk ", "in progress"));
     }
 
-    public List<Modal> getdetails() {
-        //to (get) print all data
+    public List<Modal> getDetails() {
         return list1;
     }
 
-    public Modal getsingle(int id) {
-        Modal add1 = null;
-        add1 = list1.stream().filter(e -> e.getTaskId() == id).findFirst().get();
-        return add1;
+    public Modal getSingle(int id) {
+        Modal modal = null;
+        modal = list1.stream().filter(e -> e.getTaskId() == id).findFirst().get();
+        return modal;
     }
 
-    public Modal addtolist(Modal e) {
-        list1.add(e);
-        return e;
+    public Modal addToList(Modal modal) {
+        list1.add(modal);
+        return modal;
     }
-public List<Modal> deleteall(){
-list1.clear();
-return list1;
-}
-    public void deletedata(int id) {
-        list1 = list1.stream().filter(Modal -> Modal.getTaskId() != id).collect(Collectors.toList());
+
+    public List<Modal> deleteAll() {
+        list1.clear();
+        return list1;
+    }
+
+    public void deleteSingle(int id) {
+        list1 = list1.stream().filter(i -> i.getTaskId() != id).collect(Collectors.toList());
     }
 
     public void update(Modal entcls, int upid) {
-        list1 = list1.stream().map(b -> {
-            if (b.getTaskId() == upid) {
-                b.setTaskName(entcls.getTaskName());
-                b.setPriority(entcls.getPriority());
-                b.setDescription(entcls.getDescription());
-                b.setProgress(entcls.getProgress());
+        list1 = list1.stream().map(i -> {
+            if (i.getTaskId() == upid) {
+                i.setTaskId(entcls.getTaskId());
+                i.setTaskName(entcls.getTaskName());
+                i.setPriority(entcls.getPriority());
+                i.setDescription(entcls.getDescription());
+                i.setProgress(entcls.getProgress());
             }
-            return b;
+            return i;
         }).collect(Collectors.toList());
     }
 }
