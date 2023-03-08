@@ -21,13 +21,7 @@ public class Modal {
 
     @Override
     public String toString() {
-        return "Modal{" +
-                "taskId=" + taskId +
-                ", taskName='" + taskName + '\'' +
-                ", priority=" + priority +
-                ", description='" + description + '\'' +
-                ", progress='" + progress + '\'' +
-                '}';
+        return "Modal{" + "taskId=" + taskId + ", taskName='" + taskName + '\'' + ", priority=" + priority + ", description='" + description + '\'' + ", progress='" + progress + '\'' + '}';
     }
 
     public int getTaskId() {
